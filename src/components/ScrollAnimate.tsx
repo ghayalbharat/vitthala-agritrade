@@ -41,7 +41,6 @@ export default function ScrollAnimate({
         ease: [0.16, 1, 0.3, 1] // Luxurious, buttery smooth cubic-bezier easing
       }}
       className={className}
-      style={{ transformTemplate: ({ y, scale }) => `translate3d(0, ${y}, 0) scale(${scale})` }} // Hardware-accelerated translate3d
     >
       {children}
     </motion.div>
