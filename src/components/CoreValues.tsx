@@ -1,141 +1,203 @@
-import React, { useState } from 'react';
-import { ArrowUpRight, ArrowDownRight, Sprout, ShieldCheck, HeartHandshake } from 'lucide-react';
+import React from 'react';
+import { Quote } from 'lucide-react';
 import ScrollAnimate from './ScrollAnimate';
 
-interface ValueItem {
-  id: number;
-  title: string;
-  subtitle: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
-
 export default function CoreValues() {
-  const [activeId, setActiveId] = useState<number>(1);
-
-  const values: ValueItem[] = [
-    {
-      id: 1,
-      title: "Farmer Prosperity",
-      subtitle: "TRUSTED FARMING PARTNERSHIPS",
-      description: "Our direct-sourcing model empowers local communities with sustainable agricultural guidance, interest-free credit advances, and fair trade pricing. We stand side-by-side with smiling Indian farmers to enrich their families, preserve soil vitality, and guarantee supply stability.",
-      icon: Sprout
-    },
-    {
-      id: 2,
-      title: "Absolute Quality & Integrity",
-      subtitle: "GOLD-STANDARD TESTING CERTIFICATION",
-      description: "Every shipment is backed by multi-point moisture analysis, strict laboratory grading, and rigorous phytosanitary inspections. We believe in complete transparency, providing buyers with verifiable batch-level digital traceability reports.",
-      icon: ShieldCheck
-    },
-    {
-      id: 3,
-      title: "Sourcing Efficiency",
-      subtitle: "END-TO-END COLD CHAIN LOGISTICS",
-      description: "From initial mandi procurement to final custom clearance, we eliminate middleman inefficiencies. Utilizing modern temperature-controlled warehousing and optimized global freight networks, we reduce overheads and protect shipment freshness.",
-      icon: HeartHandshake
-    }
-  ];
-
   return (
-    <section id="values" className="bg-[#0D0C0A] text-white relative overflow-hidden" style={{ contentVisibility: 'auto' }}>
-      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[640px] lg:min-h-[750px] items-stretch">
+    <section id="values" className="bg-[#FCFCF9] py-24 border-t border-neutral-200/40 relative overflow-hidden" style={{ contentVisibility: 'auto' }}>
+      {/* Decorative ambient background glows */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-amber-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* LEFT SIDE: Custom background image from Google Drive */}
-        <div className="lg:col-span-6 relative overflow-hidden min-h-[350px] lg:min-h-full">
-          <img
-            src="https://lh3.googleusercontent.com/d/1dzjVQtOfm235p5VqCURk7W8O0-5LEUm5"
-            alt="Vitthala AgriTrade Core Values Sourcing Banner"
-            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none transition-transform duration-700 hover:scale-105"
-            referrerPolicy="no-referrer"
-          />
-          {/* Warm, golden-hour gradient overlay that fades into the dark values section */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0D0C0A] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#0D0C0A] pointer-events-none" />
-          
-          {/* Floating badge over the photo for additional context */}
-          <div className="absolute bottom-8 left-8 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-4 max-w-[280px]">
-            <p className="text-[10px] uppercase font-bold tracking-widest text-[#1A7721]">Field Integration</p>
-            <p className="text-sm font-medium text-neutral-100 mt-1 leading-snug">
-              Direct linkages with 12,000+ happy farmers across regional crop clusters.
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+          <ScrollAnimate>
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#1A7721] bg-emerald-50 border border-emerald-100 px-3.5 py-1.5 rounded-full">
+              Guiding Principles
+            </span>
+          </ScrollAnimate>
+          <ScrollAnimate delay={0.1}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-[#112F13] mt-4 mb-6 leading-tight">
+              Our Core Values
+            </h2>
+          </ScrollAnimate>
+          <ScrollAnimate delay={0.2}>
+            <p className="text-neutral-600 text-sm sm:text-base md:text-lg leading-relaxed font-sans font-medium">
+              We hold ourselves to premium standards. These foundational pillars drive our operations, from our local sourcing hubs directly to our international buyers.
             </p>
-          </div>
+          </ScrollAnimate>
         </div>
 
-        {/* RIGHT SIDE: Interactive UI mimicking the reference mockup */}
-        <div className="lg:col-span-6 flex flex-col justify-center p-8 sm:p-12 lg:p-20 relative bg-gradient-to-b from-[#14120F] to-[#0D0C0A] border-t lg:border-t-0 lg:border-l border-white/5">
+        {/* Bento Grid layout matching the asymmetric mockup design */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           
-          {/* Faint sunset-background glow effect behind the text */}
-          <div className="absolute -right-40 top-1/4 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute left-10 bottom-10 w-[300px] h-[300px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
-
-          <ScrollAnimate className="relative z-10 space-y-8 max-w-xl w-full">
-            
-            {/* Pill Tag */}
-            <div className="inline-block">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#C2A578] border border-[#C2A578]/40 px-3.5 py-1.5 rounded-full bg-amber-500/5">
-                Trusted Farming Solutions
-              </span>
+          {/* Row 1, Column 1: Value 1 (Text Quote Card) */}
+          <ScrollAnimate delay={0.1} className="flex h-full">
+            <div className="bg-[#FAF9F6] border border-neutral-200/50 p-8 sm:p-10 rounded-[2.5rem] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between w-full min-h-[300px] lg:min-h-[360px]">
+              <div className="text-[#C2A578] mb-4 text-left">
+                <Quote size={28} fill="currentColor" className="opacity-30" />
+              </div>
+              <div className="flex-grow flex flex-col justify-center text-left">
+                <p className="text-neutral-800 font-serif italic text-base sm:text-lg lg:text-xl font-semibold leading-relaxed">
+                  “Our direct-sourcing model empowers local agricultural communities with sustainable guidance and fair trade pricing. We stand side-by-side with smiling farmers.”
+                </p>
+                <div className="w-10 h-[1.5px] bg-[#C2A578]/50 my-6" />
+              </div>
+              <div className="flex items-center gap-4 mt-2">
+                <div className="h-12 w-12 rounded-full overflow-hidden border border-neutral-200 shadow-sm shrink-0">
+                  <img 
+                    src="/src/assets/images/dnyaneswar_bankar_1782554158009.jpg" 
+                    alt="Dnyaneswar Bankar" 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-display font-bold text-neutral-900 text-sm sm:text-base leading-tight">Dnyaneswar Bankar</h4>
+                  <p className="text-[11px] text-neutral-500 font-sans mt-0.5 font-bold tracking-wider uppercase">Sourcing Lead</p>
+                </div>
+              </div>
             </div>
-
-            {/* Main Display Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold tracking-tight leading-[1.1] text-white">
-              From Field to Future
-            </h2>
-
-            {/* Accordion / List Elements */}
-            <div className="space-y-4 pt-4">
-              {values.map((item) => {
-                const isActive = activeId === item.id;
-                const IconComponent = item.icon;
-
-                return (
-                  <div
-                    key={item.id}
-                    onClick={() => setActiveId(item.id)}
-                    className={`cursor-pointer transition-all duration-300 border-b border-white/10 pb-6 group ${
-                      isActive ? "text-white" : "text-neutral-400 hover:text-neutral-200"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between py-2">
-                      <div className="flex items-center gap-4">
-                        <span className={`text-xs font-mono font-bold tracking-widest ${
-                          isActive ? "text-[#C2A578]" : "text-neutral-500"
-                        }`}>
-                          0{item.id}
-                        </span>
-                        <h3 className="text-xl sm:text-2xl font-display font-bold tracking-tight">
-                          {item.title}
-                        </h3>
-                      </div>
-                      
-                      {/* Interactive arrow styling like the reference image (up/down) */}
-                      <div className={`h-8 w-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
-                        isActive 
-                          ? "border-[#C2A578] bg-[#C2A578] text-[#0D0C0A]" 
-                          : "border-white/10 group-hover:border-white/30"
-                      }`}>
-                        {isActive ? (
-                          <ArrowUpRight size={14} className="stroke-[2.5]" />
-                        ) : (
-                          <ArrowDownRight size={14} className="stroke-[2.2]" />
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Smooth interactive description box */}
-                    <div className={`transition-all duration-300 overflow-hidden ${
-                      isActive ? "max-h-[220px] opacity-100 mt-3" : "max-h-0 opacity-0"
-                    }`}>
-                      <p className="text-neutral-300 text-sm sm:text-base leading-relaxed pl-8 pr-4 font-sans font-normal">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
           </ScrollAnimate>
+
+          {/* Row 1, Column 2: Image Card (Farmer Harvesting Crop) */}
+          <ScrollAnimate delay={0.2} className="flex h-full">
+            <div className="relative overflow-hidden rounded-[2.5rem] shadow-sm border border-neutral-200/40 group w-full min-h-[220px] sm:min-h-[280px] lg:min-h-full">
+              <img 
+                src="/src/assets/images/indian_farmer_harvest_1782552689115.jpg" 
+                alt="Smiling Indian Farmer" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all duration-300" />
+            </div>
+          </ScrollAnimate>
+
+          {/* Row 1, Column 3: Image Card (Global Sourcing Meeting) */}
+          <ScrollAnimate delay={0.3} className="flex h-full">
+            <div className="relative overflow-hidden rounded-[2.5rem] shadow-sm border border-neutral-200/40 group w-full min-h-[220px] sm:min-h-[280px] lg:min-h-full">
+              <img 
+                src="/src/assets/images/global_grain_logistics_1782544538340.jpg" 
+                alt="Sourcing Team Collaboration" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all duration-300" />
+            </div>
+          </ScrollAnimate>
+
+          {/* Row 2, Column 1: Image Card (Field Sourcing Tractor) */}
+          <ScrollAnimate delay={0.15} className="flex h-full">
+            <div className="relative overflow-hidden rounded-[2.5rem] shadow-sm border border-neutral-200/40 group w-full min-h-[220px] sm:min-h-[280px] lg:min-h-full">
+              <img 
+                src="/src/assets/images/tractor_in_field_1782544519793.jpg" 
+                alt="Agricultural Cultivation" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all duration-300" />
+            </div>
+          </ScrollAnimate>
+
+          {/* Row 2, Column 2: Image Card (Quality Lab Test) */}
+          <ScrollAnimate delay={0.25} className="flex h-full">
+            <div className="relative overflow-hidden rounded-[2.5rem] shadow-sm border border-neutral-200/40 group w-full min-h-[220px] sm:min-h-[280px] lg:min-h-full">
+              <img 
+                src="/src/assets/images/qc_scientist_lab_1782558166661.jpg" 
+                alt="Quality Lab Testing" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all duration-300" />
+            </div>
+          </ScrollAnimate>
+
+          {/* Row 2, Column 3: Value 2 (Text Quote Card) */}
+          <ScrollAnimate delay={0.35} className="flex h-full">
+            <div className="bg-[#FAF9F6] border border-neutral-200/50 p-8 sm:p-10 rounded-[2.5rem] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between w-full min-h-[300px] lg:min-h-[360px]">
+              <div className="text-[#C2A578] mb-4 text-left">
+                <Quote size={28} fill="currentColor" className="opacity-30" />
+              </div>
+              <div className="flex-grow flex flex-col justify-center text-left">
+                <p className="text-neutral-800 font-serif italic text-base sm:text-lg lg:text-xl font-semibold leading-relaxed">
+                  “Every shipment is backed by multi-point moisture analysis, strict laboratory grading, and rigorous phytosanitary inspections. We believe in complete transparency and digital traceability.”
+                </p>
+                <div className="w-10 h-[1.5px] bg-[#C2A578]/50 my-6" />
+              </div>
+              <div className="flex items-center gap-4 mt-2">
+                <div className="h-12 w-12 rounded-full overflow-hidden border border-neutral-200 shadow-sm shrink-0">
+                  <img 
+                    src="/src/assets/images/chaitanya_chavhan_1782554142792.jpg" 
+                    alt="Chaitanya Chavhan" 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-display font-bold text-neutral-900 text-sm sm:text-base leading-tight">Chaitanya Chavhan</h4>
+                  <p className="text-[11px] text-neutral-500 font-sans mt-0.5 font-bold tracking-wider uppercase">QC Specialist</p>
+                </div>
+              </div>
+            </div>
+          </ScrollAnimate>
+
+          {/* Row 3, Column 1: Value 3 (Text Quote Card) */}
+          <ScrollAnimate delay={0.2} className="flex h-full">
+            <div className="bg-[#FAF9F6] border border-neutral-200/50 p-8 sm:p-10 rounded-[2.5rem] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between w-full min-h-[300px] lg:min-h-[360px]">
+              <div className="text-[#C2A578] mb-4 text-left">
+                <Quote size={28} fill="currentColor" className="opacity-30" />
+              </div>
+              <div className="flex-grow flex flex-col justify-center text-left">
+                <p className="text-neutral-800 font-serif italic text-base sm:text-lg lg:text-xl font-semibold leading-relaxed">
+                  “From initial mandi procurement to final custom clearance, we eliminate inefficiencies. Utilizing modern temperature-controlled warehousing, we protect shipment freshness.”
+                </p>
+                <div className="w-10 h-[1.5px] bg-[#C2A578]/50 my-6" />
+              </div>
+              <div className="flex items-center gap-4 mt-2">
+                <div className="h-12 w-12 rounded-full overflow-hidden border border-neutral-200 shadow-sm shrink-0">
+                  <img 
+                    src="/src/assets/images/chandrabhaga_gawli_1782554125294.jpg" 
+                    alt="Chandrabhaga Gawli" 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-display font-bold text-neutral-900 text-sm sm:text-base leading-tight">Chandrabhaga Gawli</h4>
+                  <p className="text-[11px] text-neutral-500 font-sans mt-0.5 font-bold tracking-wider uppercase">Logistics Lead</p>
+                </div>
+              </div>
+            </div>
+          </ScrollAnimate>
+
+          {/* Row 3, Column 2: Image Card (Market Logistics Dispatch) */}
+          <ScrollAnimate delay={0.3} className="flex h-full">
+            <div className="relative overflow-hidden rounded-[2.5rem] shadow-sm border border-neutral-200/40 group w-full min-h-[220px] sm:min-h-[280px] lg:min-h-full">
+              <img 
+                src="/src/assets/images/market_logistics_1782558614656.jpg" 
+                alt="Logistics Coordination" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all duration-300" />
+            </div>
+          </ScrollAnimate>
+
+          {/* Row 3, Column 3: Image Card (High-Quality Grain Cargo) */}
+          <ScrollAnimate delay={0.4} className="flex h-full">
+            <div className="relative overflow-hidden rounded-[2.5rem] shadow-sm border border-neutral-200/40 group w-full min-h-[220px] sm:min-h-[280px] lg:min-h-full">
+              <img 
+                src="/src/assets/images/grains_wheat_maize_1782543916268.jpg" 
+                alt="Premium Grains" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all duration-300" />
+            </div>
+          </ScrollAnimate>
+
         </div>
 
       </div>

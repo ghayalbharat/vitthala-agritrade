@@ -16,7 +16,7 @@ export default function Markets() {
         'SGS verified moisture and purity consistency during domestic logistics.'
       ],
       states: 'Maharashtra • MP • Gujarat • Karnataka • AP',
-      highlightColor: 'text-[#1A7721]'
+      highlightColor: 'text-emerald-700'
     },
     {
       id: 'export',
@@ -30,33 +30,56 @@ export default function Markets() {
         'Containerized shipping routes optimized for quality and freshness.'
       ],
       states: 'UAE (Dubai) • Middle East • East Africa • Asia-Pac',
-      highlightColor: 'text-amber-500'
+      highlightColor: 'text-amber-700'
     }
   ];
 
   return (
-    <section id="markets" className="py-24 bg-white text-neutral-900 border-b border-neutral-100 select-none" style={{ contentVisibility: 'auto' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="markets" className="py-24 bg-[#010502] text-white border-b border-neutral-900 relative overflow-hidden select-none" style={{ contentVisibility: 'auto' }}>
+      {/* Immersive background image from user's Google Drive link with fallbacks and overlays */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://lh3.googleusercontent.com/d/1db0g3R-JRuheWwBnLeHV0RPHXSHgazmi" 
+          className="w-full h-full object-cover opacity-35 filter brightness-50 contrast-[1.1]"
+          alt="Markets & Networks Background"
+          referrerPolicy="no-referrer"
+          onError={(e) => {
+            // Robust fallback chain
+            const currentSrc = e.currentTarget.src;
+            if (currentSrc.includes("lh3.googleusercontent.com")) {
+              e.currentTarget.src = "https://docs.google.com/uc?export=download&id=1db0g3R-JRuheWwBnLeHV0RPHXSHgazmi";
+            } else if (currentSrc.includes("export=download")) {
+              e.currentTarget.src = "https://docs.google.com/uc?export=view&id=1db0g3R-JRuheWwBnLeHV0RPHXSHgazmi";
+            } else {
+              // Final fallback to high-quality logistics image
+              e.currentTarget.src = "/src/assets/images/global_grain_logistics_1782544538340.jpg";
+            }
+          }}
+        />
+        {/* Deep, rich forest green & black overlay for a mysterious, high-end organic feel */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010502]/98 via-[#041F06]/92 to-[#010301]/98 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-[#021c05]/65 mix-blend-color-burn" />
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* UPPER BADGE AND SECTION HEADER */}
+        {/* UPPER BADGE AND SECTION HEADER (CENTERED) */}
         <ScrollAnimate>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
-            <div className="lg:col-span-5 space-y-3 text-left">
-              <span className="text-[10px] font-bold tracking-widest text-[#1A7721] uppercase bg-emerald-50 border border-emerald-100 px-3.5 py-1.5 rounded-full">
-                6. Markets & Key Clients
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-display font-black tracking-tight text-neutral-900">
-                Domestic Sourcing & Export Networks
-              </h2>
-            </div>
-            <div className="lg:col-span-7 text-left">
-              <p className="text-neutral-500 text-sm sm:text-base leading-relaxed font-sans">
-                Vitthala AgriTrade maintains robust commercial links across state-level borders and international marine corridors. We supply certified crop lots directly to high-capacity consumer brands, starch conglomerates, and GCC trade networks.
-              </p>
-            </div>
+          <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+            <span className="text-[10px] font-bold tracking-widest text-[#FCB92C] bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full inline-block">
+              6. Markets & Key Clients
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-white mt-4 mb-4">
+              Domestic Sourcing & Export Networks
+            </h2>
+            <div className="w-16 h-[2.5px] bg-[#FCB92C] mx-auto my-6" />
+            <p className="text-neutral-200 text-sm sm:text-base leading-relaxed font-sans font-medium max-w-2xl mx-auto">
+              Vitthala AgriTrade maintains robust commercial links across state-level borders and international marine corridors. We supply certified crop lots directly to high-capacity consumer brands, starch conglomerates, and GCC trade networks.
+            </p>
           </div>
         </ScrollAnimate>
-
+ 
         {/* DOUBLE COLUMN SPLIT: DOMESTIC VS EXPORT */}
         <ScrollAnimate delay={0.15}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -67,107 +90,59 @@ export default function Markets() {
             return (
               <div
                 key={mkt.id}
-                className={`border rounded-[2.5rem] p-8 flex flex-col justify-between hover:shadow-lg transition-all duration-300 ${
-                  isDomestic
-                    ? 'bg-[#ADEBB3] border-emerald-500/10 hover:border-emerald-500/25'
-                    : isExport
-                    ? 'bg-[#FFFDD1] border-amber-500/10 hover:border-amber-500/25'
-                    : 'bg-[#FCFCF9] border-neutral-200/50 hover:border-neutral-200'
-                }`}
+                className="backdrop-blur-xl border border-white/40 bg-white/75 hover:bg-white/85 rounded-[2.5rem] p-8 sm:p-10 flex flex-col justify-between hover:shadow-[0_30px_60px_rgba(0,0,0,0.4)] transition-all duration-300 transform hover:-translate-y-1 group text-neutral-900"
               >
                 <div className="space-y-6">
                   {/* Header Block */}
-                  <div className={`flex items-baseline justify-between border-b pb-5 ${
-                    isDomestic 
-                      ? 'border-emerald-900/10' 
-                      : isExport 
-                      ? 'border-amber-900/10' 
-                      : 'border-neutral-100'
-                  }`}>
+                  <div className="flex items-baseline justify-between border-b border-black/10 pb-5">
                     <div className="space-y-1 text-left">
                       <span className={`text-[10px] font-bold tracking-wider uppercase font-mono ${
                         isDomestic 
-                          ? 'text-emerald-900/70' 
+                          ? 'text-emerald-800' 
                           : isExport 
-                          ? 'text-amber-900/70' 
-                          : 'text-neutral-400'
+                          ? 'text-amber-800' 
+                          : 'text-neutral-500'
                       }`}>
                         {mkt.tagline}
                       </span>
-                      <h3 className="text-xl sm:text-2xl font-display font-black text-neutral-900 tracking-tight">
+                      <h3 className="text-xl sm:text-2xl font-display font-black text-[#112F13] tracking-tight">
                         {mkt.title}
                       </h3>
                     </div>
                     <div className={`h-11 w-11 rounded-2xl flex items-center justify-center border shadow-sm ${
                       isDomestic 
-                        ? 'bg-white/80 text-emerald-900 border-white/90' 
+                        ? 'bg-emerald-50 text-emerald-700 border-emerald-100' 
                         : isExport 
-                        ? 'bg-white/80 text-amber-900 border-white/90' 
-                        : 'bg-white text-neutral-800 border-neutral-200/60'
+                        ? 'bg-amber-50 text-amber-700 border-amber-100' 
+                        : 'bg-neutral-50 text-neutral-700 border-neutral-100'
                     }`}>
-                      <Icon size={18} className={isDomestic ? 'text-[#1A7721]' : isExport ? 'text-amber-600' : mkt.highlightColor} />
+                      <Icon size={18} className="stroke-[2.5]" />
                     </div>
                   </div>
-
+ 
                   {/* Description */}
-                  <p className={`text-xs sm:text-sm leading-relaxed font-sans text-left ${
-                    isDomestic 
-                      ? 'text-emerald-950/80 font-medium' 
-                      : isExport 
-                      ? 'text-amber-950/85 font-medium' 
-                      : 'text-neutral-600'
-                  }`}>
+                  <p className="text-xs sm:text-sm leading-relaxed font-sans text-left text-neutral-700 font-medium">
                     {mkt.description}
                   </p>
-
+ 
                   {/* Bullet points */}
                   <ul className="space-y-3 pt-2 text-left">
                     {mkt.points.map((pt, idx) => (
-                      <li key={idx} className={`flex items-start gap-2.5 text-xs sm:text-sm font-sans ${
-                        isDomestic 
-                          ? 'text-emerald-900/80 font-medium' 
-                          : isExport 
-                          ? 'text-amber-900/80 font-medium' 
-                          : 'text-neutral-500'
-                      }`}>
-                        <CheckCircle size={15} className={`mt-0.5 shrink-0 ${isDomestic ? 'text-[#1A7721]' : isExport ? 'text-amber-600' : 'text-[#1A7721]'}`} />
+                      <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm font-sans text-neutral-800 font-medium">
+                        <CheckCircle size={15} className={`mt-0.5 shrink-0 ${isDomestic ? 'text-emerald-600' : isExport ? 'text-amber-600' : 'text-emerald-600'}`} />
                         <span>{pt}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-
+ 
                 {/* Footer geographic focus */}
-                <div className={`border-t pt-5 mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-left ${
-                  isDomestic 
-                    ? 'border-emerald-900/10' 
-                    : isExport 
-                    ? 'border-amber-900/10' 
-                    : 'border-neutral-100'
-                }`}>
+                <div className="border-t border-black/10 pt-5 mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-left">
                   <div className="space-y-0.5">
-                    <span className={`text-[9px] uppercase font-bold font-mono tracking-wider ${
-                      isDomestic 
-                        ? 'text-emerald-900/60' 
-                        : isExport 
-                        ? 'text-amber-900/60' 
-                        : 'text-neutral-400'
-                    }`}>Active Footprint</span>
-                    <p className={`text-xs font-bold font-sans ${
-                      isDomestic 
-                        ? 'text-emerald-950' 
-                        : isExport 
-                        ? 'text-amber-950' 
-                        : 'text-neutral-800'
-                    }`}>{mkt.states}</p>
+                    <span className="text-[9px] uppercase font-bold font-mono tracking-wider text-neutral-500">Active Footprint</span>
+                    <p className="text-xs font-bold font-sans text-neutral-900">{mkt.states}</p>
                   </div>
-                  <span className={`text-[9px] font-mono tracking-wider uppercase px-2.5 py-1 rounded-md font-bold flex items-center gap-1 border ${
-                    isDomestic
-                      ? 'text-emerald-950 bg-white/40 border-white/40'
-                      : isExport
-                      ? 'text-amber-950 bg-white/40 border-white/40'
-                      : 'text-[#1A7721] bg-emerald-50 border-emerald-100'
-                  }`}>
+                  <span className="text-[9px] font-mono tracking-wider uppercase px-2.5 py-1 rounded-md font-bold flex items-center gap-1 border text-neutral-900 bg-black/5 border-black/10 hover:bg-black/10 transition-all duration-200">
                     <span>Active Corridor</span>
                     <ArrowUpRight size={11} />
                   </span>
@@ -177,7 +152,7 @@ export default function Markets() {
           })}
         </div>
         </ScrollAnimate>
-
+ 
       </div>
     </section>
   );

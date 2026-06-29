@@ -173,35 +173,82 @@ export default function AboutUs() {
         </div>
         </ScrollAnimate>
 
-        {/* MISSION & VISION BENTO */}
+        {/* MISSION & VISION SECTION - MATCHING THE IMMERSIVE GREEN BANNER BACKGROUND UI DESIGN */}
         <ScrollAnimate delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-          {/* Mission */}
-          <div className="bg-white border border-neutral-200/60 p-8 rounded-3xl shadow-sm flex items-start gap-5">
-            <div className="h-12 w-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
-              <Compass size={24} />
+          <div className="relative mb-28 rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#112f13]/20 bg-[#112f13]">
+            {/* Immersive background image */}
+            <div className="absolute inset-0 z-0">
+              <img 
+                src="/src/assets/images/tractor_in_field_1782544519793.jpg" 
+                className="w-full h-full object-cover opacity-35 filter brightness-75 contrast-125"
+                alt="Agri-field background"
+                referrerPolicy="no-referrer"
+              />
+              {/* Rich green gradient overlay exactly matching the reference style */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0e2d10]/95 via-[#113813]/90 to-[#091f0a]/98 mix-blend-multiply" />
+              <div className="absolute inset-0 bg-[#0c2e0f]/50 mix-blend-color" />
             </div>
-            <div>
-              <h4 className="text-lg font-bold font-display text-neutral-900 mb-2">Our Mission</h4>
-              <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-sans">
-                “To deliver high-quality commodities with reliability, transparency, and sustainability.”
-              </p>
-            </div>
-          </div>
 
-          {/* Vision */}
-          <div className="bg-white border border-neutral-200/60 p-8 rounded-3xl shadow-sm flex items-start gap-5">
-            <div className="h-12 w-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-100">
-              <Eye size={24} />
-            </div>
-            <div>
-              <h4 className="text-lg font-bold font-display text-neutral-900 mb-2">Our Vision</h4>
-              <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-sans">
-                “To be a leading agri-commodity trader globally, trusted by producers and buyers alike.”
-              </p>
+            {/* Content centered over the background */}
+            <div className="relative z-10 px-6 py-16 sm:py-20 md:py-24 max-w-5xl mx-auto text-center">
+              
+              {/* Small top label */}
+              <div className="mb-4">
+                <span className="text-[#FCB92C] font-bold text-xs sm:text-sm tracking-[0.25em] uppercase">
+                  Discover Our Purpose
+                </span>
+              </div>
+
+              {/* Main heavy headline */}
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-none mb-10 max-w-3xl mx-auto">
+                Endless commitment, <span className="text-emerald-300">natural trust.</span>
+              </h3>
+
+              {/* Divider */}
+              <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent mx-auto mb-10" />
+
+              {/* Mission & Vision grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-left mb-12">
+                {/* Mission Block */}
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 sm:p-8 rounded-2xl hover:bg-white/10 transition-all">
+                  <span className="text-xs font-bold tracking-widest text-emerald-300 uppercase block mb-3">OUR MISSION</span>
+                  <p className="text-base sm:text-lg text-neutral-100 font-sans leading-relaxed font-medium">
+                    “To deliver high-quality commodities with reliability, transparency, and sustainability.”
+                  </p>
+                </div>
+
+                {/* Vision Block */}
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 sm:p-8 rounded-2xl hover:bg-white/10 transition-all">
+                  <span className="text-xs font-bold tracking-widest text-amber-300 uppercase block mb-3">OUR VISION</span>
+                  <p className="text-base sm:text-lg text-neutral-100 font-sans leading-relaxed font-medium">
+                    “To be a leading agri-commodity trader globally, trusted by producers and buyers alike.”
+                  </p>
+                </div>
+              </div>
+
+              {/* Centered Ghost Outline Button matching the "Discover Now" design */}
+              <div className="flex justify-center pt-2">
+                <button
+                  onClick={() => {
+                    const el = document.getElementById('products');
+                    if (el) {
+                      const offset = 80;
+                      const bodyRect = document.body.getBoundingClientRect().top;
+                      const elementRect = el.getBoundingClientRect().top;
+                      const elementPosition = elementRect - bodyRect;
+                      const offsetPosition = elementPosition - offset;
+                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                  }}
+                  className="border border-white/30 hover:border-white text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-8 py-4 rounded-full bg-transparent hover:bg-white/10 active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer animate-none"
+                >
+                  <Compass size={14} className="animate-pulse text-amber-300" />
+                  <span>Discover Now</span>
+                </button>
+              </div>
+
             </div>
           </div>
-        </div>
         </ScrollAnimate>
 
         {/* VALUES SECTION */}
