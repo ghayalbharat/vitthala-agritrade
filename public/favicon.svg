@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Light gray background circle to match the uploaded logo -->
+  <circle cx="50" cy="50" r="46" fill="#EAEAEA" />
+  
+  <!-- Outer green crescent -->
+  <path d="M 21 35 C 15 58, 28 85, 50 85 C 72 85, 85 58, 79 35 C 74 58, 62 78, 50 78 C 38 78, 26 58, 21 35 Z" fill="#4B8C13" />
+
+  <!-- Inner green crescent -->
+  <path d="M 26 39 C 21 59, 31 79, 50 79 C 69 79, 79 59, 74 39 C 70 58, 60 72, 50 72 C 40 72, 30 58, 26 39 Z" fill="#1A7721" />
+
+  <!-- Main golden-yellow teardrop/pin shape -->
+  <path d="M 50 75 C 31 51, 31.5 35, 31.5 31.5 C 31.5 21, 39.8 15, 50 15 C 60.2 15, 68.5 21, 68.5 31.5 C 68.5 35, 69 51, 50 75 Z" fill="#FCB92C" />
+
+  <!-- Green wheat stalk vertical stem -->
+  <rect x="49" y="24" width="2" height="42" rx="1" fill="#1A7721" />
+
+  <!-- Top wheat seed/droplet -->
+  <path d="M 50 24 C 47.5 28, 47.5 34, 50 34 C 52.5 34, 52.5 28, 50 24 Z" fill="#1A7721" />
+
+  <!-- Leaves/grains pairs on the wheat stalk -->
+  <!-- Pair 1 (top) -->
+  <path d="M 50 35 C 43 33, 41 36, 43 41 C 45 42, 48 40, 50 37 Z" fill="#1A7721" />
+  <path d="M 50 35 C 57 33, 59 36, 57 41 C 55 42, 52 40, 50 37 Z" fill="#1A7721" />
+
+  <!-- Pair 2 (middle) -->
+  <path d="M 50 43 C 43 41, 41 44, 43 49 C 45 50, 48 48, 50 45 Z" fill="#1A7721" />
+  <path d="M 50 43 C 57 41, 59 44, 57 49 C 55 50, 52 48, 50 45 Z" fill="#1A7721" />
+
+  <!-- Pair 3 (bottom) -->
+  <path d="M 50 51 C 43 49, 41 52, 43 57 C 45 58, 48 56, 50 53 Z" fill="#1A7721" />
+  <path d="M 50 51 C 57 49, 59 52, 57 57 C 55 58, 52 56, 50 53 Z" fill="#1A7721" />
+</svg>

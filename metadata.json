@@ -1,0 +1,6 @@
+{
+  "name": "Farmora",
+  "description": "Vitthala AgriTrade - Premium multi-commodity bulk trading, agricultural technology, and global sourcing solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
