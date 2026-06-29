@@ -13,6 +13,7 @@ import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
 import InteractiveQuoteModal from './components/InteractiveQuoteModal';
 import CustomCursor from './components/CustomCursor';
+import ScrollProgress from './components/ScrollProgress';
 
 export default function App() {
   // Global states
@@ -63,6 +64,9 @@ export default function App() {
     <div className="relative min-h-screen bg-[#FCFCF9] text-neutral-900 selection:bg-amber-100 selection:text-amber-900" id="application-root-container">
       {/* Premium custom mouse cursor */}
       <CustomCursor />
+
+      {/* Thin, fixed scroll progress indicator at top of the page */}
+      <ScrollProgress />
 
       {/* 1. Glassmorphic Navigation with micro contact bar */}
       <Navbar onOpenQuote={() => handleOpenQuote()} activeSection={activeSection} />
