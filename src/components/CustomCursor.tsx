@@ -20,12 +20,14 @@ export default function CustomCursor() {
 
   useEffect(() => {
     // 1. Accessibility & Responsive checks
-    const mediaQueryPrefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const mediaQueryPointerFine = window.matchMedia('(pointer: fine)');
+    if (typeof window === 'undefined') return;
+
+    const mediaQueryPrefersReduced = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    const mediaQueryPointerFine = window.matchMedia ? window.matchMedia('(pointer: fine)') : null;
 
     const checkAvailability = () => {
-      const prefersReduced = mediaQueryPrefersReduced.matches;
-      const isFinePointer = mediaQueryPointerFine.matches;
+      const prefersReduced = mediaQueryPrefersReduced ? mediaQueryPrefersReduced.matches : false;
+      const isFinePointer = mediaQueryPointerFine ? mediaQueryPointerFine.matches : false;
       
       // Custom cursor is enabled ONLY on desktop/devices with fine pointer, and if reduced motion is NOT preferred
       const enabled = isFinePointer && !prefersReduced;
@@ -40,13 +42,41 @@ export default function CustomCursor() {
 
     checkAvailability();
 
-    // Event listeners for responsive changes
-    mediaQueryPrefersReduced.addEventListener('change', checkAvailability);
-    mediaQueryPointerFine.addEventListener('change', checkAvailability);
+    // Event listeners for responsive changes with fallback for older browsers
+    const handleReducedChange = () => checkAvailability();
+    const handlePointerChange = () => checkAvailability();
+
+    if (mediaQueryPrefersReduced) {
+      if (mediaQueryPrefersReduced.addEventListener) {
+        mediaQueryPrefersReduced.addEventListener('change', handleReducedChange);
+      } else if ((mediaQueryPrefersReduced as any).addListener) {
+        (mediaQueryPrefersReduced as any).addListener(handleReducedChange);
+      }
+    }
+
+    if (mediaQueryPointerFine) {
+      if (mediaQueryPointerFine.addEventListener) {
+        mediaQueryPointerFine.addEventListener('change', handlePointerChange);
+      } else if ((mediaQueryPointerFine as any).addListener) {
+        (mediaQueryPointerFine as any).addListener(handlePointerChange);
+      }
+    }
 
     return () => {
-      mediaQueryPrefersReduced.removeEventListener('change', checkAvailability);
-      mediaQueryPointerFine.removeEventListener('change', checkAvailability);
+      if (mediaQueryPrefersReduced) {
+        if (mediaQueryPrefersReduced.removeEventListener) {
+          mediaQueryPrefersReduced.removeEventListener('change', handleReducedChange);
+        } else if ((mediaQueryPrefersReduced as any).removeListener) {
+          (mediaQueryPrefersReduced as any).removeListener(handleReducedChange);
+        }
+      }
+      if (mediaQueryPointerFine) {
+        if (mediaQueryPointerFine.removeEventListener) {
+          mediaQueryPointerFine.removeEventListener('change', handlePointerChange);
+        } else if ((mediaQueryPointerFine as any).removeListener) {
+          (mediaQueryPointerFine as any).removeListener(handlePointerChange);
+        }
+      }
       document.body.classList.remove('custom-cursor-active');
     };
   }, []);

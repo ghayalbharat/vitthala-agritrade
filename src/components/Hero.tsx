@@ -33,11 +33,24 @@ export default function Hero({ onOpenQuote }: HeroProps) {
   // Media query for prefers-reduced-motion to guarantee accessibility compliance
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
     const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mediaQuery.addEventListener('change', listener);
-    return () => mediaQuery.removeEventListener('change', listener);
+    
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', listener);
+    } else if ((mediaQuery as any).addListener) {
+      (mediaQuery as any).addListener(listener);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', listener);
+      } else if ((mediaQuery as any).removeListener) {
+        (mediaQuery as any).removeListener(listener);
+      }
+    };
   }, []);
 
   // Spring physics configuration for luxurious, lag-free parallax scrolling response
